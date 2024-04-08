@@ -43,7 +43,7 @@ namespace ejercicioGlobal
                              op.darAltaBiblioteca(bibliotecas);
                             break;
                         case 2:
-                            op.darAltaCliente();
+                            op.darAltaCliente(bibliotecas);
                             break;
                         case 3:
                             op.darAltaLibro();

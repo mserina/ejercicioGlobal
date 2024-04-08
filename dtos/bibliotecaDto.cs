@@ -16,12 +16,18 @@ namespace ejercicioGlobal.dtos
         long id;
         string nombreBiblioteca;
         string direccion;
+        private List<clienteDto> clientesLista;
+        private List<prestamoDto> prestamosLista;
 
         //Getters Setters
 
         public long Id { get => id; set => id = value; }
         public string NombreBiblioteca { get => nombreBiblioteca; set => nombreBiblioteca = value; }
         public string Direccion { get => direccion; set => direccion = value; }
+        internal List<clienteDto> ClientesLista { get => clientesLista; set => clientesLista = value; }
+        internal List<prestamoDto> PrestamosLista { get => prestamosLista; set => prestamosLista = value; }
+
+
 
 
 
@@ -31,6 +37,8 @@ namespace ejercicioGlobal.dtos
             this.id = id;
             this.nombreBiblioteca = nombreBiblioteca;
             this.direccion = direccion;
+            clientesLista = new List<clienteDto>();
+            prestamosLista = new List<prestamoDto>();
         }
 
         public bibliotecaDto()
@@ -38,6 +46,16 @@ namespace ejercicioGlobal.dtos
 
         }
 
+        //METODO APARTE
+        public void AgregarCliente(clienteDto clientes)
+        {
+            ClientesLista.Add(clientes); 
+        }
+
+        public void AgregarPrestamo(prestamoDto prestamos)
+        {
+            PrestamosLista.Add(prestamos);
+        }
 
 
     }

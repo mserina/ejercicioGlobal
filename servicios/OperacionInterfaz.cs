@@ -15,9 +15,9 @@ namespace ejercicioGlobal.servicios
     {
         public void darAltaBiblioteca(List<bibliotecaDto> bibliotecas);
 
+        
+        public void darAltaCliente(List<bibliotecaDto> bibliotecas);
         /*
-        public void darAltaCliente();
-
         public void darAltaPrestamo();
 
         public void darAltaLibro();
