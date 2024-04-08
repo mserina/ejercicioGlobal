@@ -18,6 +18,9 @@ namespace ejercicioGlobal
         /// <param name="args"></param>
 
         string rutaArchivo = "C:\\Users\\Usuario\\Desktop\\ARCHIVOS\\registroSea";
+        
+
+
         StreamWriter sw;
         StreamReader sr;
         static public void Main(String[] args)
@@ -46,10 +49,10 @@ namespace ejercicioGlobal
                             op.darAltaCliente(bibliotecas);
                             break;
                         case 3:
-                            op.darAltaLibro();
+                            op.verClientes(bibliotecas);
                             break;
                         case 4:
-                            op.darAltaPrestamo();
+                            
                             break;
                     }
                 }

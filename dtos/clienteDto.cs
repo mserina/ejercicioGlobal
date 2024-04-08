@@ -37,15 +37,16 @@ namespace ejercicioGlobal.dtos
 
 
         //Controladores
-        public clienteDto(long id, string nombre, string apellidos, string fechaDeNacimiento, string DNI, string correoElectrónico, DateTime fechaInicioSuspensión)
+        public clienteDto(long id, string nombre, string apellidos, string fechaDeNacimiento, string DNI, string correoElectrónico)
         {
+            prestamoDto prestamo = new prestamoDto();
             this.id = id;
             this.nombre = nombre;
             this.apellidos = apellidos;
             this.fechaDeNacimiento = fechaDeNacimiento;
             this.DNI = DNI;
             this.correoElectrónico = correoElectrónico;
-            this.fechaInicioSuspensión = fechaInicioSuspensión;
+            this.fechaInicioSuspensión = prestamo.FechaEntrega.AddDays(1);
             this.fechaFinSuspensión = fechaInicioSuspensión.AddDays(7);
         }
 

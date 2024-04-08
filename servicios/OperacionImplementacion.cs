@@ -23,7 +23,7 @@ namespace ejercicioGlobal.servicios
         {
             Console.WriteLine("Inserte el nombre de la biblioteca");
             string nombre = Console.ReadLine();
-            Console.WriteLine("Inserte el nombre de la biblioteca");
+            Console.WriteLine("Inserte el direccion de la biblioteca");
             string direccion = Console.ReadLine();
             long id = idGenerator2.idGeneratorB(bibliotecas);
 
@@ -44,12 +44,7 @@ namespace ejercicioGlobal.servicios
             string apellido = Console.ReadLine();
             Console.WriteLine("Inserte fecha de nacimiento");
             string fechaNacimiento = Console.ReadLine();
-            Console.WriteLine("Inserte los Numeros del DNI");
-            int numeroDni = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine("Inserte la Letra del DNI");
-            string letraDireccion = Console.ReadLine();
-            pedirDNI(numeroDni, letraDireccion);
-            string dniCompleto = numeroDni + letraDireccion;
+            string dniCompleto = pedirDNI();
             Console.WriteLine("Inserte un Correo electronico");
             string correo = Console.ReadLine();
 
@@ -63,22 +58,90 @@ namespace ejercicioGlobal.servicios
                 }
             }
 
-            clienteDto clienteNuevo = new clienteDto(id, nombre, apellido, fechaNacimiento, dniCompleto, string correoElectrónico, DateTime fechaInicioSuspensión);
+            clienteDto clienteNuevo = new clienteDto(id, nombre, apellido, fechaNacimiento, dniCompleto, correo);
+
+            foreach (bibliotecaDto biblioteca2 in bibliotecas)
+            {
+                if (biblioteca2.Id == idBiblioteca)
+                {
+
+                    biblioteca2.AgregarCliente(clienteNuevo);
+                }
+            }
+
+
         }
 
+        public void verClientes(List<bibliotecaDto> bibliotecas)
+        {
+            Console.WriteLine("Inserte la biblioteca");
+            long idBiblioteca = Convert.ToInt64(Console.ReadLine());
+            foreach (bibliotecaDto biblioteca2 in bibliotecas)
+            {
+                if (biblioteca2.Id == idBiblioteca)
+                {
+
+                    foreach (clienteDto clientes in biblioteca2.ClientesLista)
+                    {
+                        Console.WriteLine(" ");
+                        Console.WriteLine(clientes.Id);
+                        Console.WriteLine(clientes.Nombre);
+                        Console.WriteLine(clientes.DNI1);
+
+                    }
+                }
+            }
+
+        }
+        
+        public void darAltaLibro(List<bibliotecaDto> bibliotecas)
+        {
+            Console.WriteLine("Inserte el id de la biblioteca donde quiere dar de alta al cliente");
+            long idBiblioteca = Convert.ToInt64(Console.ReadLine());
+
+            long id = 0;
+            foreach (bibliotecaDto biblioteca in bibliotecas)
+            {
+                if (biblioteca.Id == idBiblioteca)
+                {
+
+                    id = idGenerator2.idGeneratorC(biblioteca.ClientesLista);
+                }
+            }
+            Console.WriteLine("Inserta el titulo del libro");
+            string titulo = Console.ReadLine();
+            Console.WriteLine("Insertar subtitulo del libro");
+            string subtitulo = Console.ReadLine();
+            Console.WriteLine("Insertar autor del libro");
+            string autor = Console.ReadLine();
+            Console.WriteLine("Inserte el ISBN");
+            string ISBN = Console.ReadLine();
+            Console.WriteLine("Inserte el numero de la edicion");
+            int numeroEdicion = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Inserte la editorial");
+            string editorial = Console.ReadLine();
+            int stock = Convert.ToInt32(Console.ReadLine());
+
+            librosDto libroNuevo = new librosDto( id,  titulo,  subtitulo,  autor, ISBN,  numeroEdicion,  editorial,  stock);
+
+            foreach (bibliotecaDto biblioteca2 in bibliotecas)
+            {
+                if (biblioteca2.Id == idBiblioteca)
+                {
+
+                    biblioteca2.AgregarLibro(libroNuevo);
+                }
+            }
+
+        }
         /*
         public void darAltaPrestamo()
         {
 
         }
-
-        public void darAltaLibro()
-        {
-
-        }
         */
 
-        private void pedirDNI(int numeroDniInsertado, string letraDniInsertado)
+        private string pedirDNI()
         {
             string[] letrasDNI = new string[23];
             letrasDNI[0] = "T";
@@ -130,18 +193,26 @@ namespace ejercicioGlobal.servicios
             numeroDni[21] = 21;
             numeroDni[22] = 22;
 
+            string dniCompleto = "";
             bool cerrarBucle = false;
             while (!cerrarBucle)
             {
-             
-                int DNINumeroResto = numeroDniInsertado % 23;
+                Console.WriteLine("Inserte numero del DNI");
+                int DNINumero = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine("Inserte letra del DNI");
+                string DNILetra = Console.ReadLine();
+               
+
+                int DNINumeroResto = DNINumero % 23;
 
 
                 if (numeroDni[DNINumeroResto] == DNINumeroResto)
                 {
-                    if (letraDniInsertado == letrasDNI[DNINumeroResto])
+                    if (DNILetra == letrasDNI[DNINumeroResto])
                     {
                         cerrarBucle = true;
+                        dniCompleto = DNINumero + DNILetra;
+                       
                     }
                     else
                     {
@@ -152,9 +223,15 @@ namespace ejercicioGlobal.servicios
                 {
                     Console.WriteLine("Ese dni no existe");
                 }
+
+                
             }
+
+            return dniCompleto;
+
+
+
+
         }
-
-
     }
 }

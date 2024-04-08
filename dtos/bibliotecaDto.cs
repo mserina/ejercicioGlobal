@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,6 +19,8 @@ namespace ejercicioGlobal.dtos
         string direccion;
         private List<clienteDto> clientesLista;
         private List<prestamoDto> prestamosLista;
+        private List<librosDto> librosLista;
+        public string rutaArchivo = "C:\\Users\\Usuario\\Desktop\\ARCHIVOS\\registroSea";
 
         //Getters Setters
 
@@ -57,6 +60,20 @@ namespace ejercicioGlobal.dtos
             PrestamosLista.Add(prestamos);
         }
 
+        public void AgregarLibro(librosDto libro)
+        {
+            librosLista.Add(libro);
+        }
+
+        /*
+        public void abrirArchivo(StreamWriter sw)
+        {
+            using (sw = new StreamWriter(rutaArchivo))
+            {
+                sw
+            }
+        }
+        */
 
     }
 }
