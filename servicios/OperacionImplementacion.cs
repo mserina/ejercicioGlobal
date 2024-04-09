@@ -44,7 +44,7 @@ namespace ejercicioGlobal.servicios
             string apellido = Console.ReadLine();
             Console.WriteLine("Inserte fecha de nacimiento");
             string fechaNacimiento = Console.ReadLine();
-            string dniCompleto = pedirDNI();
+            string dniCompleto = pedirDNI(bibliotecas, idBiblioteca);
             Console.WriteLine("Inserte un Correo electronico");
             string correo = Console.ReadLine();
 
@@ -141,7 +141,7 @@ namespace ejercicioGlobal.servicios
         }
         */
 
-        private string pedirDNI()
+        private string pedirDNI(List<bibliotecaDto> bibliotecas, long idBiblioteca)
         {
             string[] letrasDNI = new string[23];
             letrasDNI[0] = "T";
@@ -210,9 +210,28 @@ namespace ejercicioGlobal.servicios
                 {
                     if (DNILetra == letrasDNI[DNINumeroResto])
                     {
-                        cerrarBucle = true;
+                        
                         dniCompleto = DNINumero + DNILetra;
-                       
+
+                        foreach (bibliotecaDto biblioteca2 in bibliotecas)
+                        {
+                            if (biblioteca2.Id == idBiblioteca)
+                            {
+
+                                foreach (clienteDto clientes in biblioteca2.ClientesLista)
+                                {
+                                    if(dniCompleto == clientes.DNI1)
+                                    {
+                                        Console.WriteLine("El DNI ya existe");
+                                    }
+                                    else
+                                    {
+                                        cerrarBucle = true;
+                                    }
+                                }
+                            }
+                        }
+
                     }
                     else
                     {
@@ -223,7 +242,6 @@ namespace ejercicioGlobal.servicios
                 {
                     Console.WriteLine("Ese dni no existe");
                 }
-
                 
             }
 
