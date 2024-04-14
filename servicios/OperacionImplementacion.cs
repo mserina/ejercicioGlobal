@@ -93,10 +93,7 @@ namespace ejercicioGlobal.servicios
                         Console.WriteLine(clientes.DNI1);
 
                     }
-                    foreach (librosDto libros in biblioteca2.LibrosLista)
-                    {
-                        Console.WriteLine(libros.Titulo);
-                    }
+                    
 
                 }
             }
