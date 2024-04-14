@@ -29,9 +29,7 @@ namespace ejercicioGlobal.dtos
         public string Direccion { get => direccion; set => direccion = value; }
         internal List<clienteDto> ClientesLista { get => clientesLista; set => clientesLista = value; }
         internal List<prestamoDto> PrestamosLista { get => prestamosLista; set => prestamosLista = value; }
-
-
-
+        internal List<librosDto> LibrosLista { get => librosLista; set => librosLista = value; }
 
 
         //Controladores

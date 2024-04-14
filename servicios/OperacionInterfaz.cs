@@ -19,10 +19,13 @@ namespace ejercicioGlobal.servicios
         public void darAltaCliente(List<bibliotecaDto> bibliotecas);
 
         public void verClientes(List<bibliotecaDto> bibliotecas);
+
         /*
         public void darAltaPrestamo();
-
-        public void darAltaLibro();
         */
+
+        public void darAltaLibro(List<bibliotecaDto> bibliotecas);
+
+
     }
 }

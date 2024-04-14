@@ -44,7 +44,11 @@ namespace ejercicioGlobal.servicios
             string apellido = Console.ReadLine();
             Console.WriteLine("Inserte fecha de nacimiento");
             string fechaNacimiento = Console.ReadLine();
+            /*
             string dniCompleto = pedirDNI(bibliotecas, idBiblioteca);
+            */
+            Console.WriteLine("Inserte DNI");
+            string dniCompleto = Console.ReadLine();
             Console.WriteLine("Inserte un Correo electronico");
             string correo = Console.ReadLine();
 
@@ -89,6 +93,11 @@ namespace ejercicioGlobal.servicios
                         Console.WriteLine(clientes.DNI1);
 
                     }
+                    foreach (librosDto libros in biblioteca2.LibrosLista)
+                    {
+                        Console.WriteLine(libros.Titulo);
+                    }
+
                 }
             }
 
@@ -96,7 +105,7 @@ namespace ejercicioGlobal.servicios
         
         public void darAltaLibro(List<bibliotecaDto> bibliotecas)
         {
-            Console.WriteLine("Inserte el id de la biblioteca donde quiere dar de alta al cliente");
+            Console.WriteLine("Inserte el id de la biblioteca donde quiere dar de alta el libro");
             long idBiblioteca = Convert.ToInt64(Console.ReadLine());
 
             long id = 0;
@@ -105,7 +114,7 @@ namespace ejercicioGlobal.servicios
                 if (biblioteca.Id == idBiblioteca)
                 {
 
-                    id = idGenerator2.idGeneratorC(biblioteca.ClientesLista);
+                    id = idGenerator2.idGeneratorL(biblioteca.LibrosLista);
                 }
             }
             Console.WriteLine("Inserta el titulo del libro");
@@ -120,6 +129,7 @@ namespace ejercicioGlobal.servicios
             int numeroEdicion = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine("Inserte la editorial");
             string editorial = Console.ReadLine();
+            Console.WriteLine("Inserte stocks");
             int stock = Convert.ToInt32(Console.ReadLine());
 
             librosDto libroNuevo = new librosDto( id,  titulo,  subtitulo,  autor, ISBN,  numeroEdicion,  editorial,  stock);
@@ -134,13 +144,14 @@ namespace ejercicioGlobal.servicios
             }
 
         }
-        /*
+        
         public void darAltaPrestamo()
         {
 
         }
-        */
+        
 
+        /*
         private string pedirDNI(List<bibliotecaDto> bibliotecas, long idBiblioteca)
         {
             string[] letrasDNI = new string[23];
@@ -251,5 +262,6 @@ namespace ejercicioGlobal.servicios
 
 
         }
+        */
     }
 }

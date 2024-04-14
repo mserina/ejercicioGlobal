@@ -23,6 +23,7 @@ namespace ejercicioGlobal.servicios
             Console.WriteLine("4[] DAR ALTA PRESTAMO");
             Console.WriteLine(" ");
 
+            
             opcionSeleccionada = Convert.ToInt32(Console.ReadLine());
 
             return opcionSeleccionada;

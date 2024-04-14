@@ -43,14 +43,14 @@ namespace ejercicioGlobal.utilidades
             return nuevoId;
         }
 
-        public long idGeneratorL(List<bibliotecaDto> bibliotecas)
+        public long idGeneratorL(List<librosDto> libros)
         {
             long nuevoId;
-            int tamañoLista = bibliotecas.Count;
+            int tamañoLista = libros.Count;
 
             if (tamañoLista > 0)
             {
-                nuevoId = bibliotecas[bibliotecas.Count - 1].Id + 1;
+                nuevoId = libros[libros.Count - 1].Id + 1;
             }
             else
             {

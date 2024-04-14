@@ -49,10 +49,10 @@ namespace ejercicioGlobal
                             op.darAltaCliente(bibliotecas);
                             break;
                         case 3:
-                            op.verClientes(bibliotecas);
+                            op.darAltaLibro(bibliotecas);   
                             break;
                         case 4:
-                            
+                            op.verClientes(bibliotecas);    
                             break;
                     }
                 }
